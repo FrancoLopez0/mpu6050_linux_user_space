@@ -2,9 +2,14 @@
 #define MPU6050_H
 
 #include "stdio.h"
-#include "pico/stdlib.h"
-#include "hardware/i2c.h"
+#include <stdint.h>
 #include <math.h>
+#include <errno.h>
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
+#include <sys/ioctl.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #define NUM_SAMPLES 200 // Number of samples for calibrations
 
@@ -98,7 +103,7 @@ typedef struct {
 	float std_dev_gyro_z;
 	uint8_t accel_range;
 	uint8_t gyro_range;
-	i2c_inst_t *i2c;
+	int file;
 	uint8_t addr;
 }mpu6050_t;
 

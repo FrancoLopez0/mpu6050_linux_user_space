@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/talos/github/mpu6050_linux_user_space/build",
+  "command": "/usr/bin/cc   -std=c11 -Wall -Wextra -Wpedantic -o CMakeFiles/mpu6050.dir/main.c.o -c /home/talos/github/mpu6050_linux_user_space/main.c",
+  "file": "/home/talos/github/mpu6050_linux_user_space/main.c",
+  "output": "CMakeFiles/mpu6050.dir/main.c.o"
+},
+{
+  "directory": "/home/talos/github/mpu6050_linux_user_space/build",
+  "command": "/usr/bin/cc   -std=c11 -Wall -Wextra -Wpedantic -o CMakeFiles/mpu6050.dir/mpu6050.c.o -c /home/talos/github/mpu6050_linux_user_space/mpu6050.c",
+  "file": "/home/talos/github/mpu6050_linux_user_space/mpu6050.c",
+  "output": "CMakeFiles/mpu6050.dir/mpu6050.c.o"
+}
+]

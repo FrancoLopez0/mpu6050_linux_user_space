@@ -3,7 +3,7 @@
 // Direccion del MPU6050
 static uint8_t mpu6050_addr;
 // Bus de I2C
-static i2c_inst_t *mpu6050_i2c;
+static int mpu6050_file;
 
 static inline void mpu6050_write(uint8_t reg, uint8_t *src, uint8_t len) {
     // Array completo para enviar
@@ -13,14 +13,18 @@ static inline void mpu6050_write(uint8_t reg, uint8_t *src, uint8_t len) {
     // Copio los otros
     for(uint8_t i = 0; i < len; i++) { buff[i + 1] = src[i]; }
     // Inicio la comunicacion
-    i2c_write_blocking(mpu6050_i2c, mpu6050_addr, buff, len + 1, false);
+    write(mpu6050_file, buff, len + 1);
 }
 
 static inline void mpu6050_read(uint8_t reg, uint8_t *dst, uint8_t len) {
-    // Inicio la comunicacion
-    i2c_write_blocking(mpu6050_i2c, mpu6050_addr, &reg, 1, true);
-    // Leo los bytes
-    i2c_read_blocking(mpu6050_i2c, mpu6050_addr, dst, len, false);
+ 
+    write(mpu6050_file, &reg, 1);
+
+    read(mpu6050_file, dst, len);
+}
+
+void sleep_ms(int time){
+    sleep((time / 1000));
 }
 
 uint8_t mpu6050_fifo_read(void){
@@ -67,7 +71,7 @@ void mpu6050_fifo_reset(void) {
 
 void mpu6050_init(mpu6050_t *mpu6050) {
     // Guardo bus de I2C y direccion
-    mpu6050_i2c = mpu6050->i2c;
+    mpu6050_file = mpu6050->file;
     mpu6050_addr = mpu6050->addr;
     
     // power management register 0X6B we should write all 0's to wake the sensor up
