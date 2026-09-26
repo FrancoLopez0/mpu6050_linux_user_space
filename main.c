@@ -8,12 +8,19 @@
 
 const char *dev = "/dev/i2c-1";
 int addr = 0x68;
-mpu6050_t mpu;
 
 int main(){
 
     int fd = open(dev, O_RDWR);
     int res = 0;
+
+    mpu6050_t mpu = {
+        .accel_range = RANGE_8G,
+        .gyro_range = RANGE_250DPS,
+        .addr = addr,
+        .i2c = fd
+    };
+
 
     if(fd < 0){
         perror("open");
