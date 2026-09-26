@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #define NUM_SAMPLES 200 // Number of samples for calibrations
 
