@@ -15,7 +15,7 @@ int main(){
     int res = 0;
 
     mpu6050_t mpu = {
-        .accel_range = RANGE_8G,
+        .accel_range = RANGE_2G,
         .gyro_range = RANGE_250DPS,
         .addr = addr,
         .i2c = fd
@@ -39,6 +39,9 @@ int main(){
 
     // printf("Hello!");
     // while(1){
+    res = mpu6050_who_am_i();
+
+    printf("who... %x", res);
         mpu6050_get_accel(&mpu);
         printf("acel_x: %.2f, acel_y: %.2f, acel_z: %.2f\n", mpu.accel_x, mpu.accel_y, mpu.accel_z);
     //     sleep(1);
