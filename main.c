@@ -30,7 +30,7 @@ int main(){
 
     // printf("Hello!");
     while(true){
-        mpu6050_get_accel(mpu);
+        mpu6050_get_accel(&mpu);
         printf("acel_x: %.2f, acel_y: %.2f, acel_z: %.2f\n", mpu.accel_x, mpu.accel_y, mpu.accel_z);
         usleep(1e6);
     }
