@@ -20,7 +20,9 @@ int main(){
         return -1;
     }
 
-    if(ioctl(fd, I2C_SLAVE, addr) < 0){
+    res = ioctl(fd, I2C_SLAVE, addr);
+
+    if(res){
         perror("ioctl I2C_SLAVE");
         close(fd);
         return -1;
@@ -29,10 +31,10 @@ int main(){
     mpu6050_init(&mpu);
 
     // printf("Hello!");
-    while(1){
+    // while(1){
         mpu6050_get_accel(&mpu);
         printf("acel_x: %.2f, acel_y: %.2f, acel_z: %.2f\n", mpu.accel_x, mpu.accel_y, mpu.accel_z);
-        usleep(1e6);
-    }
+    //     sleep(1);
+    // }
     return 0;
 }
