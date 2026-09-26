@@ -1,10 +1,9 @@
 #ifndef MPU6050_H
 #define MPU6050_H
 
-#include "stdio.h"
-#include "pico/stdlib.h"
-#include "hardware/i2c.h"
+#include <stdio.h>
 #include <math.h>
+#include <stdint.h>
 
 #define NUM_SAMPLES 200 // Number of samples for calibrations
 
@@ -55,6 +54,8 @@
 #define ACCEL_FIFO_EN     	0x08
 #define FIFO_OFF          	0x00
 #define FIFO_RESET_BIT    	0x04
+
+typedef int i2c_inst_t;
 
 typedef struct {
 	int16_t accel_x;

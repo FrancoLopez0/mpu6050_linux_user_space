@@ -5,6 +5,10 @@ static uint8_t mpu6050_addr;
 // Bus de I2C
 static i2c_inst_t *mpu6050_i2c;
 
+void sleep_ms(int ms){
+    usleep(ms);
+}
+
 static inline void mpu6050_write(uint8_t reg, uint8_t *src, uint8_t len) {
     // Array completo para enviar
     uint8_t buff[20] = {0};
@@ -13,14 +17,17 @@ static inline void mpu6050_write(uint8_t reg, uint8_t *src, uint8_t len) {
     // Copio los otros
     for(uint8_t i = 0; i < len; i++) { buff[i + 1] = src[i]; }
     // Inicio la comunicacion
-    i2c_write_blocking(mpu6050_i2c, mpu6050_addr, buff, len + 1, false);
+    // i2c_write_blocking(mpu6050_i2c, mpu6050_addr, buff, len + 1, false);
+    write(mpu6050_i2c, &buff, len);
 }
 
 static inline void mpu6050_read(uint8_t reg, uint8_t *dst, uint8_t len) {
     // Inicio la comunicacion
-    i2c_write_blocking(mpu6050_i2c, mpu6050_addr, &reg, 1, true);
+    // i2c_write_blocking(mpu6050_i2c, mpu6050_addr, &reg, 1, true);
+    write(mpu6050_i2c, &reg, 1);
     // Leo los bytes
-    i2c_read_blocking(mpu6050_i2c, mpu6050_addr, dst, len, false);
+    // i2c_read_blocking(mpu6050_i2c, mpu6050_addr, dst, len, false);
+    read(mpu6050_i2c, dst, len);
 }
 
 uint8_t mpu6050_fifo_read(void){
