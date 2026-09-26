@@ -3,10 +3,10 @@
 // Direccion del MPU6050
 static uint8_t mpu6050_addr;
 // Bus de I2C
-static i2c_inst_t *mpu6050_i2c;
+static i2c_inst_t mpu6050_i2c;
 
 void sleep_ms(int ms){
-    usleep(ms);
+    sleep(ms/1000);
 }
 
 static inline void mpu6050_write(uint8_t reg, uint8_t *src, uint8_t len) {
