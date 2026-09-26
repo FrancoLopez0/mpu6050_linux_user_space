@@ -14,6 +14,7 @@ set_target_properties(mpu6050 PROPERTIES
 
 target_link_libraries(mpu6050 PRIVATE
     i2c
+    m
 )
 
 target_compile_options(mpu6050 PRIVATE
