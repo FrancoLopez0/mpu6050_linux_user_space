@@ -4,7 +4,7 @@ project(mpu6050 LANGUAGES C)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(mpu6050 main.c)
+add_executable(mpu6050 main.c mpu6050.c)
 
 set_target_properties(mpu6050 PROPERTIES
     C_STANDARD 11
