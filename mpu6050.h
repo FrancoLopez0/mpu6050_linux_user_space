@@ -101,7 +101,7 @@ typedef struct {
 	float std_dev_gyro_z;
 	uint8_t accel_range;
 	uint8_t gyro_range;
-	i2c_inst_t *i2c;
+	i2c_inst_t i2c;
 	uint8_t addr;
 }mpu6050_t;
 
