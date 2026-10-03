@@ -5,6 +5,7 @@ static uint8_t mpu6050_addr;
 // Bus de I2C
 static int mpu6050_file;
 
+
 static inline void mpu6050_write(uint8_t reg, uint8_t *src, uint8_t len) {
     // Array completo para enviar
     uint8_t buff[20] = {0};

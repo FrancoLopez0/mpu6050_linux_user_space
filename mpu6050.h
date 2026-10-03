@@ -105,7 +105,7 @@ typedef struct {
 	uint8_t gyro_range;
 	int file;
 	uint8_t addr;
-}mpu6050_t;
+} mpu6050_t; 
 
 void mpu6050_init(mpu6050_t *mpu6050);
 void mpu6050_reset(void);

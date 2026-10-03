@@ -1,11 +1,10 @@
 #include <stdlib.h>
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
-#include <i2c/smbus.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "mpu6050.h"
 // i2cdetect -l
 //cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
